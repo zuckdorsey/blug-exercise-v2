@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply select-none;
+  }
+  
+  body {
+    @apply m-0 p-0 overflow-hidden bg-slate-900 text-white font-sans antialiased;
+  }
+
+  #root {
+    @apply w-screen h-screen;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-black/30 backdrop-blur-md border border-white/10;
+  }
+
+  .glass-strong {
+    @apply bg-black/50 backdrop-blur-lg border border-white/20;
+  }
+
+  .control-btn {
+    @apply w-3 h-3 rounded-full transition-transform hover:scale-110;
+  }
+
+  /* macOS Window Styling */
+  .macos-window-container {
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3)) 
+            drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+    transition: filter 0.2s ease;
+    touch-action: none;
+  }
+
+  .macos-window-container:hover {
+    filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.4)) 
+            drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  }
+
+  .macos-window {
+    @apply w-full h-full flex flex-col overflow-hidden;
+    background: rgba(30, 30, 35, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.25),
+      inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  .macos-window.active {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .macos-titlebar {
+    @apply relative flex items-center px-4 py-2.5;
+    height: 36px;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px 14px 0 0;
+    user-select: none;
+    touch-action: none;
+  }
+
+  .macos-traffic-lights {
+    position: relative;
+    z-index: 10;
+  }
+
+  .macos-btn {
+    @apply flex items-center justify-center rounded-full transition-all duration-150;
+    width: 12px;
+    height: 12px;
+    border: 0.5px solid rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    touch-action: none;
+  }
+
+  .macos-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .macos-btn:active {
+    transform: scale(0.95);
+  }
+
+  .macos-btn-close {
+    background: linear-gradient(135deg, #ff6159 0%, #ff5f57 100%);
+  }
+
+  .macos-btn-close:hover {
+    background: linear-gradient(135deg, #ff7a73 0%, #ff6b69 100%);
+    box-shadow: 0 2px 6px rgba(255, 95, 87, 0.4);
+  }
+
+  .macos-btn-minimize {
+    background: linear-gradient(135deg, #ffc12f 0%, #febb2e 100%);
+  }
+
+  .macos-btn-minimize:hover {
+    background: linear-gradient(135deg, #ffd14a 0%, #ffc93f 100%);
+    box-shadow: 0 2px 6px rgba(254, 187, 46, 0.4);
+  }
+
+  .macos-btn-maximize {
+    background: linear-gradient(135deg, #2dcd41 0%, #28c840 100%);
+  }
+
+  .macos-btn-maximize:hover {
+    background: linear-gradient(135deg, #3ee052 0%, #33d64b 100%);
+    box-shadow: 0 2px 6px rgba(40, 200, 64, 0.4);
+  }
+
+  /* Icon inside traffic lights appears only on hover */
+  .macos-btn svg {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  .macos-btn:hover svg {
+    opacity: 1;
+  }
+
+  .macos-window-content {
+    @apply flex-1 overflow-auto;
+    background: rgba(20, 20, 25, 0.6);
+    border-radius: 0 0 14px 14px;
+  }
+
+  /* macOS-style scrollbar */
+  .macos-window-content::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .macos-window-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .macos-window-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .macos-window-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+    background-clip: padding-box;
+  }
+
+  /* Existing scrollbar styles */
+  .scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white/20 rounded-full hover:bg-white/30;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .macos-window {
+      border-radius: 10px;
+    }
+
+    .macos-titlebar {
+      border-radius: 10px 10px 0 0;
+    }
+
+    .macos-window-content {
+      border-radius: 0 0 10px 10px;
+    }
+  }
+
+  /* macOS Dock Styling - Tahoe Liquid Glass */
+  .dock-container {
+    perspective: 1000px;
+    will-change: transform;
+  }
+
+  .dock-glass-effect {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.12) 50%,
+      rgba(255, 255, 255, 0.08) 100%
+    );
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .dock-icon-glow {
+    filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.4));
+  }
+
+  .dock-running-indicator {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(59, 130, 246, 0.6) 100%);
+    box-shadow: 
+      0 0 8px rgba(255, 255, 255, 0.8),
+      0 0 12px rgba(59, 130, 246, 0.6);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+  }
+
+  .dock-icon-reflection {
+    mask-image: linear-gradient(to bottom, transparent 0%, black 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 50%, transparent 100%);
+  }
+}
