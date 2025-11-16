@@ -89,216 +89,78 @@ const ControlCenter = () => {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop with blur */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
             onClick={handleBackdropClick}
-            className="fixed inset-0 z-[10000] bg-black/25 backdrop-blur-[2px]"
+            className="fixed inset-0 z-[10000] bg-black/30"
           />
 
-          {/* Control Center Panel */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.97, y: -12 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.97, y: -12 }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 380, 
-              damping: 32,
-              mass: 0.7
-            }}
-            className="fixed top-[52px] right-5 z-[10001] w-[360px]"
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="fixed top-[50px] right-4 z-[10001] w-[380px] text-white"
             onClick={(e) => e.stopPropagation()}
-            style={{
-              backdropFilter: 'blur(55px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(55px) saturate(180%)',
-            }}
           >
-            {/* Premium Liquid Glass Container */}
-            <div className="relative rounded-[22px] overflow-hidden shadow-2xl">
-              {/* Main gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-b from-white/28 via-white/12 to-white/8" />
-              
-              {/* Border */}
-              <div className="absolute inset-0 rounded-[22px] border border-white/22" />
-              
-              {/* Top highlight */}
-              <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white/20 to-transparent" />
-              
-              {/* Bottom shadow */}
-              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/9 to-transparent" />
-              
-              {/* Vignette */}
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.08)_100%)]" />
-              
-              {/* Content */}
-              <div className="relative p-5 space-y-4">
-                {/* Quick Toggles Section */}
-                <div className="space-y-3">
-                  <div className="grid grid-cols-3 gap-2.5">
-                    <ToggleButton
-                      icon={Wifi}
-                      label="Wi-Fi"
-                      isActive={wifiEnabled}
-                      onClick={toggleWifi}
-                      color="blue"
-                    />
-                    <ToggleButton
-                      icon={Bluetooth}
-                      label="Bluetooth"
-                      isActive={bluetoothEnabled}
-                      onClick={toggleBluetooth}
-                      color="blue"
-                    />
-                    <ToggleButton
-                      icon={darkMode ? Sun : Moon}
-                      label={darkMode ? "Light" : "Dark"}
-                      isActive={darkMode}
-                      onClick={() => setDarkMode(!darkMode)}
-                      color="purple"
-                    />
-                    <ToggleButton
-                      icon={BellOff}
-                      label="Focus"
-                      isActive={doNotDisturb}
-                      onClick={toggleDoNotDisturb}
-                      color="purple"
-                    />
-                    <ToggleButton
-                      icon={Zap}
-                      label={getPowerModeLabel()}
-                      isActive={powerMode === "performance"}
-                      onClick={togglePowerMode}
-                      color="orange"
-                    />
-                    <ToggleButton
-                      icon={soundEnabled ? Volume2 : VolumeX}
-                      label="Sound"
-                      isActive={soundEnabled}
-                      onClick={toggleSound}
-                      color="green"
-                    />
+            <div className="rounded-[26px] border border-white/10 bg-[rgba(25,27,31,0.92)] backdrop-blur-2xl shadow-[0_18px_60px_rgba(0,0,0,0.45)] p-4 space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <ToggleButton icon={Wifi} label="Wi-Fi" isActive={wifiEnabled} onClick={toggleWifi} />
+                <ToggleButton icon={Bluetooth} label="Bluetooth" isActive={bluetoothEnabled} onClick={toggleBluetooth} />
+                <ToggleButton icon={darkMode ? Sun : Moon} label={darkMode ? "Light Mode" : "Dark Mode"} isActive={darkMode} onClick={() => setDarkMode(!darkMode)} color="purple" />
+                <ToggleButton icon={BellOff} label="Do Not Disturb" isActive={doNotDisturb} onClick={toggleDoNotDisturb} color="purple" />
+                <ToggleButton icon={Zap} label={getPowerModeLabel()} isActive={powerMode === "performance"} onClick={togglePowerMode} color="orange" />
+                <ToggleButton icon={soundEnabled ? Volume2 : VolumeX} label="Sound" isActive={soundEnabled} onClick={toggleSound} color="green" />
+              </div>
+
+              <div className="space-y-3">
+                <Slider icon={Sun} label="Brightness" value={brightness} onChange={setBrightness} />
+                <Slider icon={Volume2} label="Volume" value={volume} onChange={setVolume} />
+              </div>
+
+              <div className="grid gap-2 text-sm text-white/80">
+                <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                  <div className="flex items-center gap-2 font-medium">
+                    <Battery className="w-4 h-4" />
+                    Battery
                   </div>
+                  <span className="text-white">100%</span>
                 </div>
-
-                {/* Divider */}
-                <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-                {/* Sliders Section */}
-                <div className="space-y-3">
-                  <Slider
-                    icon={Sun}
-                    label="Brightness"
-                    value={brightness}
-                    onChange={setBrightness}
-                    color="orange"
-                  />
-
-                  <Slider
-                    icon={Volume2}
-                    label="Volume"
-                    value={volume}
-                    onChange={setVolume}
-                    color="blue"
-                  />
-                </div>
-
-                {/* Divider */}
-                <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-                {/* System Info Card */}
-                <div 
-                  className="relative rounded-2xl overflow-hidden"
-                  style={{
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                  }}
-                >
-                  {/* Card background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/18 to-white/8" />
-                  <div className="absolute inset-0 border border-white/25 rounded-2xl" />
-                  
-                  <div className="relative p-4 space-y-3">
-                    {/* Battery */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-400/20 to-green-500/20 flex items-center justify-center border border-green-400/30">
-                          <Battery className="w-4 h-4 text-green-400" strokeWidth={2.5} />
-                        </div>
-                        <span className="text-[13px] font-semibold text-white/95">Battery</span>
-                      </div>
-                      <span className="text-[13px] font-medium text-white/75 tabular-nums">100%</span>
-                    </div>
-                    
-                    {/* Network */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400/20 to-blue-500/20 flex items-center justify-center border border-blue-400/30">
-                          <Signal className="w-4 h-4 text-blue-400" strokeWidth={2.5} />
-                        </div>
-                        <span className="text-[13px] font-semibold text-white/95">Network</span>
-                      </div>
-                      <span className="text-[13px] font-medium text-white/75">
-                        {wifiEnabled ? "Connected" : "Off"}
-                      </span>
-                    </div>
-
-                    {/* Divider */}
-                    <div className="h-px bg-gradient-to-r from-transparent via-white/15 to-transparent my-3" />
-
-                    {/* Settings Button */}
-                    <motion.button
-                      whileHover={{ 
-                        scale: 1.015,
-                        backgroundColor: 'rgba(255,255,255,0.2)'
-                      }}
-                      whileTap={{ scale: 0.985 }}
-                      onClick={handleOpenSettings}
-                      className="w-full p-3 rounded-xl bg-white/12 border border-white/25 transition-all"
-                      style={{
-                        backdropFilter: 'blur(10px)',
-                        WebkitBackdropFilter: 'blur(10px)',
-                      }}
-                    >
-                      <div className="flex items-center justify-center gap-2">
-                        <Settings className="w-[15px] h-[15px] text-white/95" strokeWidth={2.5} />
-                        <span className="text-[13px] font-semibold text-white/95">
-                          Open Settings
-                        </span>
-                      </div>
-                    </motion.button>
+                <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                  <div className="flex items-center gap-2 font-medium">
+                    <Signal className="w-4 h-4" />
+                    Network
                   </div>
+                  <span className="text-white">{wifiEnabled ? "Connected" : "Offline"}</span>
                 </div>
+              </div>
 
-                {/* Time & Date Section */}
-                <div 
-                  className="relative rounded-2xl overflow-hidden"
-                  style={{
-                    backdropFilter: 'blur(30px)',
-                    WebkitBackdropFilter: 'blur(30px)',
-                  }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/15 to-white/5" />
-                  <div className="absolute inset-0 border border-white/20 rounded-2xl" />
-                  
-                  <div className="relative text-center py-5 px-4">
-                    <div className="text-[32px] font-bold text-white/98 tabular-nums tracking-tight" style={{ fontFamily: 'ui-monospace, monospace' }}>
-                      {currentTime.toLocaleTimeString('id-ID', { 
-                        hour: '2-digit', 
-                        minute: '2-digit' 
-                      })}
-                    </div>
-                    <div className="text-[13px] font-medium text-white/70 mt-1.5 tracking-wide">
-                      {currentTime.toLocaleDateString('id-ID', { 
-                        weekday: 'long', 
-                        day: 'numeric', 
-                        month: 'long' 
-                      })}
-                    </div>
-                  </div>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={handleOpenSettings}
+                className="w-full rounded-2xl border border-white/10 bg-white/10 py-3 text-sm font-semibold flex items-center justify-center gap-2"
+              >
+                <Settings className="w-4 h-4" />
+                Open Settings
+              </motion.button>
+
+              <div className="text-center border-t border-white/10 pt-3">
+                <div className="text-2xl font-semibold tracking-tight">
+                  {currentTime.toLocaleTimeString("id-ID", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </div>
+                <div className="text-xs uppercase tracking-[0.3em] text-white/60 mt-1">
+                  {currentTime.toLocaleDateString("id-ID", {
+                    weekday: "short",
+                    day: "numeric",
+                    month: "short",
+                  })}
                 </div>
               </div>
             </div>
