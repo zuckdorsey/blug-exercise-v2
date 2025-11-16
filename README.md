@@ -1,8 +1,8 @@
-# 🐧 Linux Introduction WebOS
+# 🐧 Linux Introduction LinuxOnWeb
 
 Website pendidikan interaktif tentang Linux yang didesain seperti sistem operasi desktop. Pengguna dapat berinteraksi dengan berbagai "aplikasi" dalam window yang dapat di-drag, resize, minimize, dan maximize—persis seperti menggunakan desktop Linux asli.
 
-![WebOS Preview](https://img.shields.io/badge/React-18-61DAFB?logo=react)
+![LinuxOnWeb Preview](https://img.shields.io/badge/React-18-61DAFB?logo=react)
 ![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind-3-38B2AC?logo=tailwind-css)
 ![Zustand](https://img.shields.io/badge/Zustand-State-orange)

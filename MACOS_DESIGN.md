@@ -117,4 +117,4 @@ Traffic Lights:
 
 ---
 
-**The WebOS now has a beautiful macOS-inspired window system!** 🍎✨
+**The LinuxOnWeb now has a beautiful macOS-inspired window system!** 🍎✨

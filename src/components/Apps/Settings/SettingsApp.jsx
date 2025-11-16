@@ -42,7 +42,7 @@ const SettingsApp = () => {
         return (
           <div className="space-y-4">
             <div className="p-4 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg text-white">
-              <h2 className="text-2xl font-bold mb-2">BlueG WebOS</h2>
+              <h2 className="text-2xl font-bold mb-2">BlueG LinuxOnWeb</h2>
               <p className="text-sm opacity-90">Linux Education Platform</p>
             </div>
             <div className="space-y-2">
@@ -72,7 +72,7 @@ const SettingsApp = () => {
       <div className="w-48 md:w-56 bg-gray-50 border-r border-gray-200 flex flex-col">
         <div className="p-4 border-b border-gray-200">
           <h2 className="text-lg font-bold text-gray-800">Settings</h2>
-          <p className="text-xs text-gray-500 mt-1">Customize your WebOS</p>
+          <p className="text-xs text-gray-500 mt-1">Customize your LinuxOnWeb</p>
         </div>
         
         <nav className="flex-1 p-2 space-y-1 overflow-y-auto">
@@ -112,7 +112,7 @@ const SettingsApp = () => {
         {/* Footer */}
         <div className="p-3 border-t border-gray-200 bg-white">
           <p className="text-xs text-gray-500 text-center">
-            🐧 Linux WebOS v1.0
+            🐧 Linux LinuxOnWeb v1.0
           </p>
         </div>
       </div>

@@ -1,5 +1,5 @@
 const bootLogs = [
-  { status: "OK", message: "Initializing BlueG WebOS firmware..." },
+  { status: "OK", message: "Initializing BlueG LinuxOnWeb firmware..." },
   { status: "OK", message: "Probing CPU topology (8 cores detected)" },
   { status: "OK", message: "Calibrating system clock" },
   { status: "OK", message: "Starting init system..." },
@@ -11,7 +11,7 @@ const bootLogs = [
   { status: "OK", message: "Synchronizing time with ntp.blueg.local" },
   { status: "OK", message: "Starting GNOME Display Manager..." },
   { status: "OK", message: "Handing off control to user session" },
-  { status: "OK", message: "Boot completed. Welcome to BlueG WebOS." }
+  { status: "OK", message: "Boot completed. Welcome to BlueG LinuxOnWeb." }
 ];
 
 export default bootLogs;

@@ -45,7 +45,7 @@ const FilePreview = ({ folder }) => {
 
       <div className="flex items-center gap-2 text-sm text-white/65 bg-white/5 rounded-xl px-3 py-2">
         <ShieldCheck className="w-4 h-4 text-emerald-300" />
-        Folder ini bersifat read-only dalam simulasi WebOS ini.
+        Folder ini bersifat read-only dalam simulasi LinuxOnWeb ini.
       </div>
     </aside>
   );

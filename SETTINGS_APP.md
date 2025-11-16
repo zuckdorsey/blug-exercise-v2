@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Settings application is a macOS-styled system preferences window that allows users to customize their WebOS experience in real-time. The primary feature is dynamic wallpaper selection with instant visual feedback.
+The Settings application is a macOS-styled system preferences window that allows users to customize their LinuxOnWeb experience in real-time. The primary feature is dynamic wallpaper selection with instant visual feedback.
 
 ---
 
@@ -48,7 +48,7 @@ The Settings application is a macOS-styled system preferences window that allows
   - About (system information)
 - **Active Section Highlighting**: Blue background on selected section
 - **Responsive Layout**: Sidebar + main content area
-- **Footer Branding**: WebOS version indicator
+- **Footer Branding**: LinuxOnWeb version indicator
 
 ### ✅ 5. File Organization
 
@@ -233,7 +233,7 @@ None - All features working as specified.
 
 1. **Zero Breaking Changes**: Existing functionality untouched
 2. **Real-time Updates**: Wallpaper changes visible instantly
-3. **Professional UI**: macOS-inspired design consistent with WebOS theme
+3. **Professional UI**: macOS-inspired design consistent with LinuxOnWeb theme
 4. **Mobile Ready**: Fully responsive on all screen sizes
 5. **Extensible**: Easy to add more settings sections
 6. **Performant**: CSS gradients, no external image loading

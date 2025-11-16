@@ -3,8 +3,8 @@ import { create } from "zustand";
 // Load wallpaper from localStorage
 const loadWallpaperFromStorage = () => {
   try {
-    const savedWallpaper = localStorage.getItem("webos-wallpaper");
-    const savedCustomWallpaper = localStorage.getItem("webos-custom-wallpaper");
+    const savedWallpaper = localStorage.getItem("LinuxOnWeb-wallpaper");
+    const savedCustomWallpaper = localStorage.getItem("LinuxOnWeb-custom-wallpaper");
     return {
       wallpaper: savedWallpaper || "default",
       customWallpaper: savedCustomWallpaper || null,
@@ -21,11 +21,11 @@ const loadWallpaperFromStorage = () => {
 // Save wallpaper to localStorage
 const saveWallpaperToStorage = (wallpaper, customWallpaper) => {
   try {
-    localStorage.setItem("webos-wallpaper", wallpaper);
+    localStorage.setItem("LinuxOnWeb-wallpaper", wallpaper);
     if (customWallpaper) {
-      localStorage.setItem("webos-custom-wallpaper", customWallpaper);
+      localStorage.setItem("LinuxOnWeb-custom-wallpaper", customWallpaper);
     } else {
-      localStorage.removeItem("webos-custom-wallpaper");
+      localStorage.removeItem("LinuxOnWeb-custom-wallpaper");
     }
   } catch (error) {
     console.error("Failed to save wallpaper to localStorage:", error);
@@ -37,7 +37,7 @@ const initialWallpaper = loadWallpaperFromStorage();
 const loadBootStateFromSession = () => {
   if (typeof window === "undefined") return false;
   try {
-    return sessionStorage.getItem("webos-has-booted") === "true";
+    return sessionStorage.getItem("LinuxOnWeb-has-booted") === "true";
   } catch (error) {
     console.error("Failed to load boot state from sessionStorage:", error);
     return false;
@@ -48,9 +48,9 @@ const saveBootStateToSession = (value) => {
   if (typeof window === "undefined") return;
   try {
     if (value) {
-      sessionStorage.setItem("webos-has-booted", "true");
+      sessionStorage.setItem("LinuxOnWeb-has-booted", "true");
     } else {
-      sessionStorage.removeItem("webos-has-booted");
+      sessionStorage.removeItem("LinuxOnWeb-has-booted");
     }
   } catch (error) {
     console.error("Failed to save boot state to sessionStorage:", error);

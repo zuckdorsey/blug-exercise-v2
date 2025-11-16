@@ -66,7 +66,7 @@ const BootScreen = () => {
         >
           <div className="max-w-3xl w-full mx-auto">
             <div className="text-emerald-300/70 text-xs uppercase tracking-[0.5em] mb-6">
-              BlueG WebOS kernel 6.5.0
+              BlueG LinuxOnWeb kernel 6.5.0
             </div>
 
             <div className="space-y-2 text-sm sm:text-base text-emerald-50">
@@ -104,7 +104,7 @@ const BootScreen = () => {
             </div>
 
             <div className="mt-3 text-[11px] text-slate-400 tracking-[0.3em] uppercase">
-              Booting BlueG WebOS environment
+              Booting BlueG LinuxOnWeb environment
             </div>
           </div>
         </motion.div>

@@ -96,7 +96,7 @@
 
 ### 3. About
 
-- WebOS version info
+- LinuxOnWeb version info
 - Technology stack
 - System information
 
