@@ -6,6 +6,8 @@ import MacOSWindow from "./components/Window/MacOSWindow";
 import Dock from "./components/Dock/Dock";
 import MenuBar from "./components/MenuBar/MenuBar";
 import ControlCenter from "./components/ControlCenter/ControlCenter";
+import BootScreen from "./components/System/BootScreen";
+import LockScreen from "./components/System/LockScreen";
 
 // Import all app components
 import Terminal from "./components/Apps/Terminal/Terminal";
@@ -63,6 +65,8 @@ function App() {
       <AppLauncher />
       <Dock />
       <ControlCenter />
+      <BootScreen />
+      <LockScreen />
     </div>
   );
 }

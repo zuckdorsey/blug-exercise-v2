@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+SETTINGS_APP.md
+IMPLEMENTATION_COMPLETE.md
+SETTINGS_GUIDE.md
+SETTINGS_VISUAL.md

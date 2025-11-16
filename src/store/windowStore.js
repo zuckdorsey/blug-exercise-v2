@@ -34,6 +34,29 @@ const saveWallpaperToStorage = (wallpaper, customWallpaper) => {
 
 const initialWallpaper = loadWallpaperFromStorage();
 
+const loadBootStateFromSession = () => {
+  if (typeof window === "undefined") return false;
+  try {
+    return sessionStorage.getItem("webos-has-booted") === "true";
+  } catch (error) {
+    console.error("Failed to load boot state from sessionStorage:", error);
+    return false;
+  }
+};
+
+const saveBootStateToSession = (value) => {
+  if (typeof window === "undefined") return;
+  try {
+    if (value) {
+      sessionStorage.setItem("webos-has-booted", "true");
+    } else {
+      sessionStorage.removeItem("webos-has-booted");
+    }
+  } catch (error) {
+    console.error("Failed to save boot state to sessionStorage:", error);
+  }
+};
+
 const useStore = create((set, get) => ({
   // Window management
   windows: [],
@@ -205,6 +228,20 @@ const useStore = create((set, get) => ({
   toggleDoNotDisturb: () => set((state) => ({ doNotDisturb: !state.doNotDisturb })),
   toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
   setPowerMode: (mode) => set({ powerMode: mode }),
+
+  // System lifecycle
+  hasBooted: loadBootStateFromSession(),
+  setHasBooted: (value) => {
+    saveBootStateToSession(value);
+    set({ hasBooted: value });
+  },
+  resetBootState: () => {
+    saveBootStateToSession(false);
+    set({ hasBooted: false, isLocked: true });
+  },
+  isLocked: true,
+  unlock: () => set({ isLocked: false }),
+  lock: () => set({ isLocked: true }),
 
   // App launcher menu
   menuOpen: false,
