@@ -1,83 +1,48 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import React from "react";
 
-const Slider = ({ icon: Icon, label, value, onChange, max = 100, color = "blue" }) => {
-  const [isDragging, setIsDragging] = useState(false);
-  const sliderRef = useRef(null);
-
-  const colors = {
-    blue: {
-      track: "from-blue-400 to-blue-500",
-      glow: "shadow-[0_0_12px_rgba(59,130,246,0.6)]",
-    },
-    orange: {
-      track: "from-orange-400 to-orange-500",
-      glow: "shadow-[0_0_12px_rgba(249,115,22,0.6)]",
-    },
-    green: {
-      track: "from-green-400 to-green-500",
-      glow: "shadow-[0_0_12px_rgba(34,197,94,0.6)]",
-    },
+const Slider = ({ icon: Icon, label, value, onChange, step = 1 }) => {
+  const handleChange = (event) => {
+    const newValue = Math.round(Number(event.target.value) / step) * step;
+    onChange(newValue);
   };
-
-  const colorScheme = colors[color] || colors.blue;
-
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    updateValue(e);
-  };
-
-  const handleMouseMove = (e) => {
-    if (isDragging) {
-      updateValue(e);
-    }
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const updateValue = (e) => {
-    if (!sliderRef.current) return;
-    
-    const rect = sliderRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
-    const percentage = (x / rect.width) * max;
-    onChange(Math.round(percentage));
-  };
-
-  React.useEffect(() => {
-    if (isDragging) {
-      window.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener("mouseup", handleMouseUp);
-      return () => {
-        window.removeEventListener("mousemove", handleMouseMove);
-        window.removeEventListener("mouseup", handleMouseUp);
-      };
-    }
-  }, [isDragging]);
-
-  const percentage = (value / max) * 100;
 
   return (
-    <div 
-      className="relative rounded-[18px] overflow-hidden"
-      style={{
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-      }}
-    >
-      {/* Card background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/18 to-white/8" />
-      <div className="absolute inset-0 border border-white/25 rounded-[18px]" />
-      
-      {/* Top highlight */}
-      <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/15 to-transparent rounded-t-[18px]" />
-      
-      <div className="relative p-4">
-        {/* Header */}
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-white/25 to-white/10 flex items-center justify-center border border-white/30">
+    <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white/90">
+      <div className="flex items-center justify-between text-sm mb-3">
+        <div className="flex items-center gap-2 font-medium">
+          <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+            <Icon className="w-4 h-4" strokeWidth={2.2} />
+          </div>
+          {label}
+        </div>
+        <span className="text-white/70 text-xs tracking-wide">{value}%</span>
+      </div>
+      <div className="relative h-1.5 bg-white/15 rounded-full">
+        <div
+          className="absolute inset-y-0 left-0 bg-white rounded-full"
+          style={{ width: `${value}%` }}
+        />
+        <input
+          type="range"
+          min={0}
+          max={100}
+          step={step}
+          value={value}
+          onChange={handleChange}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+        />
+        <div
+          className="absolute -top-2 -ml-2 w-4 h-4 rounded-full bg-white shadow-lg"
+          style={{ left: `calc(${value}% )` }}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Slider;
             <Icon className="w-[15px] h-[15px] text-white/95" strokeWidth={2.5} />
           </div>
           <span className="text-[13px] font-semibold text-white/95 flex-1">{label}</span>
