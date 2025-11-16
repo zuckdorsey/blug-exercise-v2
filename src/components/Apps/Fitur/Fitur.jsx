@@ -1,100 +1,97 @@
 import React from "react";
-import { Users, Server, Terminal, Package, Shield, Cpu } from "lucide-react";
+import { Users2, Terminal, Package, Server, Shield, Cpu, Sparkles } from "lucide-react";
+import InfoWindowLayout from "../../InfoWindowLayout";
+
+const features = [
+  {
+    icon: Users2,
+    title: "Multitasking & Multiuser",
+    desc: "Kernel preemptive memastikan banyak proses dan user dapat berjalan bersamaan tanpa konflik.",
+    tags: ["Virtual console", "User isolation", "TTY switching"],
+  },
+  {
+    icon: Terminal,
+    title: "Command Line Superpower",
+    desc: "Shell modern seperti Bash, Zsh, dan Fish memberikan automation tingkat lanjut.",
+    tags: ["Scripting", "Pipelines", "Aliases"],
+  },
+  {
+    icon: Package,
+    title: "Package Management",
+    desc: "APT, DNF, Pacman, hingga Flatpak menjaga siklus hidup aplikasi tetap rapi.",
+    tags: ["Repositories", "Rollback", "Dependensi"],
+  },
+  {
+    icon: Server,
+    title: "Networking Built-in",
+    desc: "Stack TCP/IP matang, SSH, firewall, dan server populer siap digunakan.",
+    tags: ["SSH", "Netfilter", "Nginx/Apache"],
+  },
+  {
+    icon: Shield,
+    title: "Security Layered",
+    desc: "SELinux/AppArmor, permission granular, dan audit log menjaga sistem aman.",
+    tags: ["SELinux", "AppArmor", "iptables/nftables"],
+  },
+  {
+    icon: Cpu,
+    title: "Dukungan Hardware Luas",
+    desc: "Linux berjalan di x86, ARM, RISC-V, bahkan microcontroller baru.",
+    tags: ["Driver upstream", "SoC", "Plug & play"],
+  },
+];
+
+const extraHighlights = [
+  "Live USB/Rescue mode",
+  "Virtualisasi KVM/QEMU",
+  "Container Docker & Podman",
+  "RAID & LVM",
+  "Beragam Desktop Environment",
+  "Pembaruan otomatis",
+  "Tool backup bawaan",
+  "Remote desktop & Waypipe",
+];
 
 const Fitur = () => {
-  const features = [
-    {
-      icon: Users,
-      title: "Multitasking & Multiuser",
-      desc: "Jalankan banyak program secara bersamaan. Banyak user dapat login dan bekerja pada sistem yang sama tanpa gangguan.",
-      details: ["Preemptive multitasking", "Multiple virtual consoles", "User isolation"],
-    },
-    {
-      icon: Terminal,
-      title: "Command Line Interface (CLI)",
-      desc: "Shell yang powerful seperti Bash, Zsh, Fish memberikan kontrol penuh atas sistem dengan scripting automation.",
-      details: ["Bash scripting", "Pipe & redirection", "Text processing tools"],
-    },
-    {
-      icon: Package,
-      title: "Package Management",
-      desc: "Sistem manajemen paket seperti APT, YUM, Pacman memudahkan instalasi, update, dan penghapusan software.",
-      details: ["apt-get / apt", "dnf / yum", "pacman / AUR"],
-    },
-    {
-      icon: Server,
-      title: "Networking Built-in",
-      desc: "Dukungan penuh untuk protokol networking, SSH, FTP, web server, database server, dan tools networking.",
-      details: ["TCP/IP stack", "SSH/SSL/TLS", "Apache/Nginx"],
-    },
-    {
-      icon: Shield,
-      title: "Security & Permissions",
-      desc: "Sistem permission user/group yang ketat, SELinux, AppArmor, dan firewall untuk melindungi sistem.",
-      details: ["File permissions", "SELinux/AppArmor", "iptables/nftables"],
-    },
-    {
-      icon: Cpu,
-      title: "Hardware Support",
-      desc: "Mendukung berbagai arsitektur: x86, ARM, RISC-V, dan ribuan device driver untuk hardware modern.",
-      details: ["Multiple architectures", "Extensive drivers", "Plug and play"],
-    },
-  ];
-
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold text-white mb-4">Fitur Utama Linux</h2>
-      <p className="text-slate-300 mb-6 leading-relaxed">
-        Linux dilengkapi dengan fitur-fitur powerful yang membuatnya cocok untuk berbagai penggunaan, 
-        dari desktop personal hingga server enterprise dan embedded systems.
-      </p>
-
-      <div className="space-y-4">
-        {features.map((feature, idx) => {
-          const Icon = feature.icon;
-          return (
-            <div
-              key={idx}
-              className="glass p-5 rounded-lg hover:bg-white/10 transition-colors"
-            >
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg">
-                  <Icon className="w-6 h-6 text-blue-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                  <p className="text-sm text-slate-300 mb-3 leading-relaxed">{feature.desc}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {feature.details.map((detail, i) => (
-                      <span
-                        key={i}
-                        className="px-2 py-1 text-xs bg-white/5 border border-white/10 rounded text-slate-400"
-                      >
-                        {detail}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+    <InfoWindowLayout
+      title="Fitur Utama Linux"
+      subtitle="Toolkit lengkap untuk developer dan sysadmin"
+      description="Setiap distribusi berbagi fondasi yang sama: kernel tangguh, CLI modern, dan keamanan berlapis."
+      icon={Sparkles}
+      accent="blue"
+      eyebrow="Fitur"
+    >
+      <div className="info-card-grid two-column">
+        {features.map((feature) => (
+          <article key={feature.title} className="info-card">
+            <div className="info-card-icon">
+              <feature.icon size={18} />
             </div>
-          );
-        })}
+            <h4 className="info-card-title">{feature.title}</h4>
+            <p className="info-card-desc">{feature.desc}</p>
+            <div className="info-pill-group">
+              {feature.tags.map((tag) => (
+                <span key={tag} className="info-chip">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
       </div>
 
-      <div className="mt-6 p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg">
-        <h3 className="font-semibold text-purple-300 mb-2">🚀 Fitur Tambahan</h3>
-        <div className="grid grid-cols-2 gap-2 text-sm text-slate-300">
-          <div>• Live USB/CD support</div>
-          <div>• Virtual machines (KVM)</div>
-          <div>• Docker containers</div>
-          <div>• RAID & LVM</div>
-          <div>• Desktop environments</div>
-          <div>• Automatic updates</div>
-          <div>• Backup tools</div>
-          <div>• Remote desktop</div>
+      <section className="info-panel">
+        <p className="info-panel-label">Fitur Tambahan</p>
+        <div className="info-card-grid three-column">
+          {extraHighlights.map((highlight) => (
+            <article key={highlight} className="info-card">
+              <p className="info-card-desc">{highlight}</p>
+            </article>
+          ))}
         </div>
-      </div>
-    </div>
+      </section>
+    </InfoWindowLayout>
   );
 };
 

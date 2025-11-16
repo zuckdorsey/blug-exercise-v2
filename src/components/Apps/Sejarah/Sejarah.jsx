@@ -1,74 +1,155 @@
 import React from "react";
+import { History, Quote, UsersRound } from "lucide-react";
+import InfoWindowLayout from "../../InfoWindowLayout";
+
+const timeline = [
+  {
+    year: "1991",
+    title: "Kernel 0.01",
+    description:
+      "Linus Torvalds merilis kernel Linux pertama dan mengundang komunitas global untuk ikut mengembangkan.",
+  },
+  {
+    year: "1992",
+    title: "Lisensi GPL",
+    description: "Kernel resmi menggunakan GNU GPL, memastikan kebebasan untuk memodifikasi dan mendistribusikan.",
+  },
+  {
+    year: "1993",
+    title: "Distro Pertama",
+    description: "Slackware dan Debian hadir, membuka jalan ekosistem distribusi Linux modern.",
+  },
+  {
+    year: "1996",
+    title: "Tux & Identitas",
+    description: "Tux dibuat oleh Larry Ewing dan menjadi maskot Linux yang ikonik hingga kini.",
+  },
+  {
+    year: "2004",
+    title: "Ubuntu",
+    description: "Canonical memperkenalkan Ubuntu dan mempopulerkan Linux untuk desktop rumahan.",
+  },
+  {
+    year: "2008",
+    title: "Android",
+    description: "Kernel Linux menggerakkan Android dan membawa Linux ke miliaran perangkat mobile.",
+  },
+  {
+    year: "Sekarang",
+    title: "Dominasi Infrastruktur",
+    description: "Linux menjalankan 100% supercomputer TOP500 dan mayoritas beban kerja cloud dunia.",
+  },
+];
+
+const figures = [
+  {
+    name: "Linus Torvalds",
+    role: "Arsitek Kernel",
+    insight: "Menjaga kualitas kernel dengan model rilis cepat dan review ketat.",
+  },
+  {
+    name: "Richard Stallman",
+    role: "GNU & FSF",
+    insight: "Menetapkan filosofi kebebasan perangkat lunak dan lisensi GPL.",
+  },
+  {
+    name: "Komunitas Global",
+    role: "10K+ Kontributor",
+    insight: "Patch harian dari perusahaan dan developer independen di seluruh dunia.",
+  },
+];
+
+const impactStats = [
+  { label: "Supercomputer TOP500", value: "100%" },
+  { label: "Server Public Cloud", value: "90%" },
+  { label: "Perangkat Android", value: "3B+" },
+];
 
 const Sejarah = () => {
   return (
-    <div className="p-6 space-y-4">
-      <h2 className="text-2xl font-bold text-white mb-4">Sejarah Linux</h2>
-      
-      <div className="space-y-4 text-slate-200">
-        <section>
-          <h3 className="text-lg font-semibold text-blue-400 mb-2">Awal Mula (1991)</h3>
-          <p className="leading-relaxed">
-            Linux dimulai sebagai proyek hobi oleh Linus Torvalds, seorang mahasiswa Universitas Helsinki, Finlandia. 
-            Pada tanggal 25 Agustus 1991, Linus mengumumkan proyek kernelnya di newsgroup Usenet comp.os.minix 
-            dengan pesan terkenal: "I'm doing a (free) operating system (just a hobby, won't be big and professional like gnu)."
+    <InfoWindowLayout
+      title="Sejarah Linux"
+      subtitle="Dari proyek kamar asrama menjadi tulang punggung internet"
+      description="Chronology singkat yang menyoroti momen paling berpengaruh sepanjang perjalanan open-source Linux."
+      icon={History}
+      accent="amber"
+      eyebrow="Timeline"
+    >
+      <div className="info-grid info-grid--two">
+        <section className="info-panel">
+          <p className="info-panel-label">Awal Mula</p>
+          <h3>Kisah yang Dimulai dari Rasa Ingin Tahu</h3>
+          <p>
+            Agustus 1991, Linus Torvalds memposting pesan sederhana di comp.os.minix tentang kernel hobi bernama
+            {" "}
+            <strong>Linux</strong>. Keterbukaan kode sumber dan semangat kolaborasi membuat ribuan developer ikut
+            berkontribusi dan menjadikannya proyek perangkat lunak terbesar di dunia.
           </p>
         </section>
-
-        <section>
-          <h3 className="text-lg font-semibold text-blue-400 mb-2">Timeline Penting</h3>
-          <div className="space-y-2">
-            <div className="flex gap-3">
-              <span className="font-mono text-green-400 min-w-[80px]">1991</span>
-              <span>Linus Torvalds merilis kernel Linux versi 0.01</span>
-            </div>
-            <div className="flex gap-3">
-              <span className="font-mono text-green-400 min-w-[80px]">1992</span>
-              <span>Linux dilisensikan di bawah GNU GPL</span>
-            </div>
-            <div className="flex gap-3">
-              <span className="font-mono text-green-400 min-w-[80px]">1993</span>
-              <span>Distribusi Slackware dan Debian dirilis</span>
-            </div>
-            <div className="flex gap-3">
-              <span className="font-mono text-green-400 min-w-[80px]">1994</span>
-              <span>Linux kernel 1.0 dirilis dengan 176.250 baris kode</span>
-            </div>
-            <div className="flex gap-3">
-              <span className="font-mono text-green-400 min-w-[80px]">1996</span>
-              <span>Tux the Penguin menjadi maskot resmi Linux</span>
-            </div>
-            <div className="flex gap-3">
-              <span className="font-mono text-green-400 min-w-[80px]">2004</span>
-              <span>Ubuntu dirilis, membawa Linux ke desktop mainstream</span>
-            </div>
-            <div className="flex gap-3">
-              <span className="font-mono text-green-400 min-w-[80px]">2008</span>
-              <span>Android (berbasis Linux) diluncurkan</span>
-            </div>
-            <div className="flex gap-3">
-              <span className="font-mono text-green-400 min-w-[80px]">Sekarang</span>
-              <span>Linux menguasai 100% supercomputer teratas, 90% cloud, dan miliaran perangkat IoT</span>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h3 className="text-lg font-semibold text-blue-400 mb-2">Filosofi Open Source</h3>
-          <p className="leading-relaxed">
-            Linux adalah contoh sempurna dari gerakan open source. Kode sumbernya terbuka untuk siapa saja untuk 
-            dibaca, dimodifikasi, dan didistribusikan. Ribuan developer dari seluruh dunia berkontribusi pada kernel Linux, 
-            menjadikannya salah satu proyek kolaboratif terbesar dalam sejarah teknologi.
-          </p>
-        </section>
-
-        <section className="bg-white/5 p-4 rounded-lg border border-white/10">
-          <p className="text-sm italic text-slate-300">
-            "Software is like sex: it's better when it's free." - Linus Torvalds
-          </p>
+        <section className="info-panel">
+          <p className="info-panel-label">Filosofi</p>
+          <h3>DNA Open Source</h3>
+          <ul className="info-list">
+            <li>Transparansi dan partisipasi global yang menjaga kualitas.</li>
+            <li>Lisensi GPL memastikan kebebasan memakai, memodifikasi, dan mendistribusikan.</li>
+            <li>Model meritokrasi: patch terbaiklah yang masuk, tanpa memandang asal kontributor.</li>
+          </ul>
         </section>
       </div>
-    </div>
+
+      <section className="info-panel">
+        <p className="info-panel-label">Timeline Penting</p>
+        <div className="info-timeline">
+          {timeline.map((item) => (
+            <article key={item.year} className="info-timeline-item">
+              <span className="info-timeline-dot" />
+              <span className="info-timeline-year">{item.year}</span>
+              <div className="info-timeline-content">
+                <h4>{item.title}</h4>
+                <p>{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <div className="info-grid info-grid--three">
+        {impactStats.map((stat) => (
+          <div key={stat.label} className="info-stat-card">
+            <p className="info-stat-value">{stat.value}</p>
+            <p className="info-stat-label">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+
+      <section className="info-panel">
+        <p className="info-panel-label">Tokoh Penting</p>
+        <div className="info-card-grid three-column">
+          {figures.map((figure) => (
+            <article key={figure.name} className="info-card">
+              <div className="info-card-icon">
+                <UsersRound size={18} />
+              </div>
+              <h4 className="info-card-title">{figure.name}</h4>
+              <p className="info-card-desc">{figure.role}</p>
+              <p className="info-card-desc">{figure.insight}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="info-panel">
+        <p className="info-panel-label">Kutipan Favorit</p>
+          <div className="info-card">
+            <div className="info-card-icon">
+              <Quote size={18} />
+            </div>
+          <p className="info-quote">
+            “Software is like sex: it’s better when it’s free.” — Linus Torvalds
+          </p>
+        </div>
+      </section>
+    </InfoWindowLayout>
   );
 };
 

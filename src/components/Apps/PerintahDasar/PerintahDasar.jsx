@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
+import { TerminalSquare, Keyboard, Command } from "lucide-react";
+import InfoWindowLayout from "../../InfoWindowLayout";
 
-const PerintahDasar = () => {
-  const commandCategories = [
+const commandCategories = [
     {
       category: "Navigasi & File System",
       commands: [
@@ -67,58 +68,109 @@ const PerintahDasar = () => {
       ],
     },
   ];
+const PerintahDasar = () => {
+  const [activeCategory, setActiveCategory] = useState(commandCategories[0].category);
+
+  const activeCommands = useMemo(
+    () => commandCategories.find((cat) => cat.category === activeCategory)?.commands ?? [],
+    [activeCategory]
+  );
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold text-white mb-4">Perintah Dasar Linux</h2>
-      <p className="text-slate-300 mb-6 leading-relaxed">
-        Menguasai command line adalah kunci untuk memanfaatkan kekuatan penuh Linux. 
-        Berikut adalah perintah-perintah penting yang harus dikuasai:
-      </p>
+    <InfoWindowLayout
+      title="Perintah Dasar Linux"
+      subtitle="Cheat sheet interaktif untuk terminal"
+      description="Pilih kategori untuk melihat contoh perintah penting lengkap dengan deskripsi dan sintaks praktis."
+      icon={TerminalSquare}
+      accent="pink"
+      eyebrow="CLI"
+    >
+      <section className="info-panel">
+        <p className="info-panel-label">Kategori</p>
+        <div className="info-pill-group">
+          {commandCategories.map((cat) => (
+            <button
+              key={cat.category}
+              type="button"
+              className={`info-pill-button ${cat.category === activeCategory ? "active" : ""}`.trim()}
+              onClick={() => setActiveCategory(cat.category)}
+            >
+              {cat.category}
+            </button>
+          ))}
+        </div>
+      </section>
 
-      <div className="space-y-6">
-        {commandCategories.map((cat, idx) => (
-          <div key={idx} className="glass p-5 rounded-lg">
-            <h3 className="text-lg font-semibold text-blue-400 mb-4">{cat.category}</h3>
-            <div className="space-y-3">
-              {cat.commands.map((command, i) => (
-                <div key={i} className="border-l-2 border-green-500/30 pl-4 py-2">
-                  <div className="flex items-baseline gap-3 mb-1">
-                    <code className="font-mono text-green-400 font-semibold">{command.cmd}</code>
-                    <span className="text-sm text-slate-400">{command.desc}</span>
-                  </div>
-                  <code className="text-xs text-slate-500 font-mono bg-black/30 px-2 py-1 rounded">
-                    $ {command.example}
-                  </code>
-                </div>
-              ))}
+      <div className="info-card-grid two-column">
+        {activeCommands.map((command) => (
+          <article key={command.cmd} className="info-command-card">
+            <div className="info-command-head">
+              <code>${command.cmd}</code>
+              <span className="info-command-desc">{command.desc}</span>
             </div>
-          </div>
+            <code className="info-command-example">$ {command.example}</code>
+          </article>
         ))}
       </div>
 
-      <div className="mt-6 space-y-3">
-        <div className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-          <h3 className="font-semibold text-yellow-300 mb-2">⚠️ Tips Penting</h3>
-          <ul className="text-sm text-slate-300 space-y-1">
-            <li>• Gunakan <code className="text-green-400">man command</code> untuk membaca manual</li>
-            <li>• <code className="text-green-400">Tab</code> untuk auto-complete</li>
-            <li>• <code className="text-green-400">Ctrl+C</code> untuk membatalkan command</li>
-            <li>• Hati-hati dengan <code className="text-red-400">rm -rf</code> - bisa menghapus semua data!</li>
+      <div className="info-grid info-grid--two">
+        <section className="info-panel">
+          <p className="info-panel-label">Tips Cepat</p>
+          <ul className="info-list">
+            <li>
+              Gunakan <code>man command</code> untuk membuka manual lengkap.
+            </li>
+            <li>
+              Tekan <code>Tab</code> dua kali untuk auto-complete dan preview opsi.
+            </li>
+            <li>
+              <code>Ctrl + C</code> menghentikan proses yang sedang berjalan.
+            </li>
+            <li>
+              Selalu hati-hati dengan <code>sudo rm -rf /</code> — perintah berbahaya!
+            </li>
           </ul>
-        </div>
-
-        <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-          <h3 className="font-semibold text-blue-300 mb-2">🔗 Pipe & Redirection</h3>
-          <div className="space-y-1 text-sm font-mono text-slate-300">
-            <div><code className="text-green-400">|</code> - Pipe output ke command lain</div>
-            <div><code className="text-green-400">{'>'}</code> - Redirect output ke file (overwrite)</div>
-            <div><code className="text-green-400">{'>>'}</code> - Append output ke file</div>
-            <div><code className="text-green-400">{'<'}</code> - Input dari file</div>
+        </section>
+        <section className="info-panel">
+          <p className="info-panel-label">Pipe & Redirection</p>
+          <div className="info-card-grid">
+            {["|", ">", ">>", "<"].map((symbol) => (
+              <article key={symbol} className="info-card">
+                <div className="info-card-icon">
+                  <Command size={16} />
+                </div>
+                <h4 className="info-card-title">{symbol}</h4>
+                <p className="info-card-desc">
+                  {symbol === "|" && "Mengalirkan output ke perintah berikutnya."}
+                  {symbol === ">" && "Menulis output ke file (overwrite)."}
+                  {symbol === ">>" && "Append output ke akhir file."}
+                  {symbol === "<" && "Mengambil input dari file."}
+                </p>
+              </article>
+            ))}
           </div>
-        </div>
+        </section>
       </div>
-    </div>
+
+      <section className="info-panel">
+        <p className="info-panel-label">Shortcuts Favorit</p>
+        <div className="info-card-grid three-column">
+          {[
+            { combo: "Ctrl + L", desc: "Membersihkan layar terminal" },
+            { combo: "Ctrl + R", desc: "Reverse search riwayat perintah" },
+            { combo: "!!", desc: "Menjalankan perintah terakhir" },
+          ].map((shortcut) => (
+            <article key={shortcut.combo} className="info-card">
+              <div className="info-card-icon">
+                <Keyboard size={16} />
+              </div>
+              <h4 className="info-card-title">{shortcut.combo}</h4>
+              <p className="info-card-desc">{shortcut.desc}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </InfoWindowLayout>
   );
 };
 

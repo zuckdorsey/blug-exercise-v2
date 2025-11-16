@@ -1,96 +1,109 @@
 import React from "react";
-import { Shield, Zap, Lock, Globe, Code, Settings } from "lucide-react";
+import { ShieldCheck, Zap, Lock, Globe2, Code2, Settings, Sparkles } from "lucide-react";
+import InfoWindowLayout from "../../InfoWindowLayout";
+
+const advantageCards = [
+  {
+    icon: Code2,
+    title: "Open Source & Gratis",
+    desc: "Tidak ada biaya lisensi. Anda bebas memeriksa, memodifikasi, dan mendistribusikan kode sumber.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Keamanan Tinggi",
+    desc: "Model permission ketat dan proses review kernel terdistribusi membuat ancaman cepat ditangani.",
+  },
+  {
+    icon: Zap,
+    title: "Performa Optimal",
+    desc: "Kernel modular memastikan Linux berjalan mulus di server hyperscale maupun laptop lama.",
+  },
+  {
+    icon: Lock,
+    title: "Privasi Terjaga",
+    desc: "Tidak ada telemetry paksa. Anda menentukan sendiri data apa yang keluar dari mesin.",
+  },
+  {
+    icon: Settings,
+    title: "Fleksibel & Customizable",
+    desc: "Dari window manager hingga scheduler kernel, semuanya bisa disesuaikan kebutuhan Anda.",
+  },
+  {
+    icon: Globe2,
+    title: "Komunitas Global",
+    desc: "Komunitas lintas negara menyediakan dokumentasi, forum, dan dukungan 24/7.",
+  },
+];
+
+const factStats = [
+  { label: "Supercomputer TOP500", value: "100%" },
+  { label: "Kapasitas Cloud", value: "90%" },
+  { label: "Perangkat Android", value: "3B+" },
+  { label: "Server Teratas", value: "96.3%" },
+];
+
+const adopterExamples = [
+  { name: "NASA", note: "Misi luar angkasa & simulasi" },
+  { name: "CERN", note: "Eksperimen partikel" },
+  { name: "Google", note: "Search & Android" },
+  { name: "NYSE", note: "Bursa efek skala global" },
+];
 
 const Kelebihan = () => {
-  const advantages = [
-    {
-      icon: Code,
-      title: "Open Source & Gratis",
-      desc: "Kode sumber terbuka untuk semua. Tidak ada biaya lisensi, bebas digunakan dan dimodifikasi.",
-      color: "text-green-400",
-    },
-    {
-      icon: Shield,
-      title: "Keamanan Tinggi",
-      desc: "Sistem permission yang ketat, virus dan malware sangat jarang. Update security yang cepat.",
-      color: "text-blue-400",
-    },
-    {
-      icon: Zap,
-      title: "Performa Optimal",
-      desc: "Ringan dan efisien. Dapat berjalan lancar bahkan di hardware lama. Cocok untuk server dan desktop.",
-      color: "text-yellow-400",
-    },
-    {
-      icon: Lock,
-      title: "Privacy Terjamin",
-      desc: "Tidak ada telemetry tersembunyi atau tracking. Anda memiliki kontrol penuh atas data pribadi.",
-      color: "text-purple-400",
-    },
-    {
-      icon: Settings,
-      title: "Sangat Customizable",
-      desc: "Ubah setiap aspek sistem dari kernel hingga desktop environment. Sesuaikan dengan kebutuhan Anda.",
-      color: "text-pink-400",
-    },
-    {
-      icon: Globe,
-      title: "Komunitas Global",
-      desc: "Didukung oleh jutaan developer dan user di seluruh dunia. Forum, wiki, dan dokumentasi lengkap.",
-      color: "text-cyan-400",
-    },
-  ];
-
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold text-white mb-4">Kelebihan Linux</h2>
-      <p className="text-slate-300 mb-6 leading-relaxed">
-        Linux menawarkan berbagai keunggulan yang membuatnya menjadi pilihan utama untuk server, 
-        developer, dan pengguna yang menghargai kebebasan dan kontrol.
-      </p>
-
-      <div className="grid gap-4">
-        {advantages.map((item, idx) => {
-          const Icon = item.icon;
-          return (
-            <div
-              key={idx}
-              className="glass p-5 rounded-lg hover:bg-white/10 transition-colors"
-            >
-              <div className="flex items-start gap-4">
-                <div className={`p-3 bg-white/5 rounded-lg ${item.color}`}>
-                  <Icon className="w-6 h-6" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
-                  <p className="text-sm text-slate-300 leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
+    <InfoWindowLayout
+      title="Kelebihan Linux"
+      subtitle="Alasan developer dan enterprise mengandalkannya"
+      description="Dari kebebasan lisensi hingga performa, Linux memberikan fondasi kuat untuk semua jenis workload."
+      icon={Sparkles}
+      accent="emerald"
+      eyebrow="Highlight"
+    >
+      <div className="info-card-grid two-column">
+        {advantageCards.map((card) => (
+          <article key={card.title} className="info-card">
+            <div className="info-card-icon">
+              <card.icon size={20} />
             </div>
-          );
-        })}
+            <h4 className="info-card-title">{card.title}</h4>
+            <p className="info-card-desc">{card.desc}</p>
+          </article>
+        ))}
       </div>
 
-      <div className="mt-6 space-y-4">
-        <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-          <h3 className="font-semibold text-green-300 mb-2">📊 Fakta Menarik</h3>
-          <ul className="text-sm text-slate-300 space-y-1">
-            <li>• 100% dari 500 supercomputer teratas menjalankan Linux</li>
-            <li>• 90% dari infrastruktur cloud menggunakan Linux</li>
-            <li>• 3+ miliar perangkat Android (berbasis Linux kernel) aktif</li>
-            <li>• 96.3% dari 1 juta server teratas menggunakan Linux</li>
-          </ul>
-        </div>
-
-        <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-          <h3 className="font-semibold text-blue-300 mb-2">🌟 Siapa yang Menggunakan Linux?</h3>
-          <p className="text-sm text-slate-300">
-            Google, Facebook, Amazon, NASA, CERN, NYSE, Bursa Efek Tokyo, dan ribuan perusahaan lainnya 
-            mengandalkan Linux untuk infrastruktur critical mereka.
-          </p>
-        </div>
+      <div className="info-grid info-grid--two">
+        <section className="info-panel">
+          <p className="info-panel-label">Fakta Cepat</p>
+          <div className="info-stat-grid">
+            {factStats.map((stat) => (
+              <div key={stat.label} className="info-stat-card">
+                <p className="info-stat-value">{stat.value}</p>
+                <p className="info-stat-label">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="info-panel">
+          <p className="info-panel-label">Siapa yang Memakai?</p>
+          <div className="info-card-grid">
+            {adopterExamples.map((company) => (
+              <article key={company.name} className="info-card">
+                <h4 className="info-card-title">{company.name}</h4>
+                <p className="info-card-desc">{company.note}</p>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
-    </div>
+
+      <section className="info-panel">
+        <p className="info-panel-label">Kenapa Penting?</p>
+        <p>
+          Linux menawarkan <strong>kontrol penuh</strong> terhadap infrastruktur digital. Ia dapat diperkeras untuk
+          kebutuhan security, dituning untuk latency rendah, atau dimodifikasi menjadi platform IoT ultra ringan.
+        </p>
+      </section>
+    </InfoWindowLayout>
   );
 };
 
