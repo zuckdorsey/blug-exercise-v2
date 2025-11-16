@@ -6,6 +6,7 @@ import {
   Info,
   Monitor,
   Command,
+  HardDrive,
 } from "lucide-react";
 
 export const dockApps = [
@@ -14,6 +15,12 @@ export const dockApps = [
     name: "Terminal",
     icon: Terminal,
     color: "#000000",
+  },
+  {
+    id: "file-manager",
+    name: "File Manager",
+    icon: HardDrive,
+    color: "#0ea5e9",
   },
   {
     id: "sejarah",

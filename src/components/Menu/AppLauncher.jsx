@@ -8,9 +8,11 @@ import {
   Info,
   Command,
   Settings,
+  HardDrive,
 } from "lucide-react";
 
 const appMenuItems = [
+  { id: "file-manager", label: "File Manager", icon: HardDrive },
   { id: "terminal", label: "Terminal", icon: Terminal },
   { id: "sejarah", label: "Sejarah Linux", icon: FileText },
   { id: "distro", label: "Distribusi Linux", icon: FolderOpen },

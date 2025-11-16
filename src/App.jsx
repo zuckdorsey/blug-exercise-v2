@@ -8,6 +8,7 @@ import MenuBar from "./components/MenuBar/MenuBar";
 import ControlCenter from "./components/ControlCenter/ControlCenter";
 import BootScreen from "./components/System/BootScreen";
 import LockScreen from "./components/System/LockScreen";
+import FileManager from "./apps/FileManager/FileManager";
 
 // Import all app components
 import Terminal from "./components/Apps/Terminal/Terminal";
@@ -27,6 +28,7 @@ import {
   Monitor,
   Command,
   Settings,
+  HardDrive,
 } from "lucide-react";
 
 const appRegistry = {
@@ -38,6 +40,7 @@ const appRegistry = {
   perintah: { component: PerintahDasar, title: "Perintah Dasar", icon: Command },
   tentang: { component: Tentang, title: "Tentang Linux", icon: Info },
   settings: { component: SettingsApp, title: "Settings", icon: Settings },
+  "file-manager": { component: FileManager, title: "File Manager", icon: HardDrive },
 };
 
 function App() {

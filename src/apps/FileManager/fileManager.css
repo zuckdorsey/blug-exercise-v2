@@ -1,0 +1,309 @@
+.file-manager {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(26px);
+  background: linear-gradient(145deg, rgba(18, 24, 38, 0.75), rgba(8, 10, 16, 0.85));
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #f8fafc;
+}
+
+.file-manager ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.file-manager ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+}
+
+.fm-sidebar {
+  width: 230px;
+  padding: 20px 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(18, 22, 35, 0.85);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fm-sidebar-header {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.fm-folder-button {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  color: inherit;
+}
+
+.fm-folder-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.fm-folder-button.active {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(14, 165, 233, 0.25));
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 12px 24px rgba(15, 118, 255, 0.2);
+}
+
+.fm-folder-button h4 {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.fm-folder-button p {
+  font-size: 0.7rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.fm-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.fm-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.fm-breadcrumbs button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.fm-breadcrumbs .separator {
+  opacity: 0.4;
+}
+
+.fm-content {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 320px);
+  gap: 24px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.fm-file-list {
+  background: rgba(15, 19, 30, 0.55);
+  border-radius: 18px;
+  padding: 16px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.fm-section-title {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 10px;
+}
+
+.fm-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.fm-folder-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 12px;
+  text-align: left;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.2s;
+}
+
+.fm-folder-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.fm-folder-card .folder-name {
+  font-weight: 600;
+}
+
+.fm-folder-card .folder-desc {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.fm-file-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fm-file-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.fm-preview {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fm-preview h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.fm-preview p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.4;
+}
+
+.fm-highlight-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fm-highlight-list li {
+  background: rgba(59, 130, 246, 0.12);
+  border-radius: 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  font-size: 0.85rem;
+}
+
+.fm-onboarding-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  backdrop-filter: blur(6px);
+}
+
+.fm-onboarding-card {
+  width: min(520px, 90%);
+  background: rgba(17, 25, 39, 0.92);
+  border-radius: 24px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.fm-onboarding-card h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.fm-onboarding-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+}
+
+.fm-onboarding-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.fm-onboarding-steps {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.fm-onboarding-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.fm-button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.fm-button.primary {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  color: white;
+}
+
+.fm-button.secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.fm-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+  .fm-content {
+    grid-template-columns: 1fr;
+  }
+
+  .fm-sidebar {
+    display: none;
+  }
+}

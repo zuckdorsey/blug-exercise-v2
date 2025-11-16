@@ -1,15 +1,16 @@
 import React from "react";
 import useStore from "../../store/windowStore";
-import { Monitor, FolderOpen, Terminal as TerminalIcon, FileText, Info, Settings as SettingsIcon } from "lucide-react";
+import { Monitor, FolderOpen, Terminal as TerminalIcon, FileText, Info, Settings as SettingsIcon, HardDrive } from "lucide-react";
 
 const appConfigs = [
-  { id: "sejarah", label: "Sejarah Linux", icon: FileText, position: { x: 50, y: 50 } },
-  { id: "distro", label: "Distribusi Linux", icon: FolderOpen, position: { x: 50, y: 150 } },
-  { id: "kelebihan", label: "Kelebihan", icon: Monitor, position: { x: 50, y: 250 } },
-  { id: "fitur", label: "Fitur", icon: Info, position: { x: 50, y: 350 } },
-  { id: "perintah", label: "Perintah Dasar", icon: TerminalIcon, position: { x: 50, y: 450 } },
-  { id: "tentang", label: "Tentang Linux", icon: Info, position: { x: 50, y: 550 } },
-  { id: "settings", label: "Settings", icon: SettingsIcon, position: { x: 50, y: 650 } },
+  { id: "file-manager", label: "File Manager", icon: HardDrive, position: { x: 50, y: 50 } },
+  { id: "sejarah", label: "Sejarah Linux", icon: FileText, position: { x: 50, y: 150 } },
+  { id: "distro", label: "Distribusi Linux", icon: FolderOpen, position: { x: 50, y: 250 } },
+  { id: "kelebihan", label: "Kelebihan", icon: Monitor, position: { x: 50, y: 350 } },
+  { id: "fitur", label: "Fitur", icon: Info, position: { x: 50, y: 450 } },
+  { id: "perintah", label: "Perintah Dasar", icon: TerminalIcon, position: { x: 50, y: 550 } },
+  { id: "tentang", label: "Tentang Linux", icon: Info, position: { x: 50, y: 650 } },
+  { id: "settings", label: "Settings", icon: SettingsIcon, position: { x: 50, y: 750 } },
 ];
 
 const DesktopIcon = ({ app }) => {
