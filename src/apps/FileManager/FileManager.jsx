@@ -10,8 +10,8 @@ import {
   getChildFolders,
   getFolder,
   rootFolders,
-} from "./folderData";
-import { onboardingSteps } from "./onboarding";
+} from "../../data/apps/fileManager/folderData";
+import { onboardingSteps } from "../../data/apps/fileManager/onboarding";
 
 const STORAGE_KEY = "fileManagerTutorialDone";
 
@@ -135,7 +135,7 @@ const FileManager = () => {
               <div className="fm-onboarding-buttons">
                 <button
                   type="button"
-                  className="fm-button secondary"
+                  className="fm-button secondary"   
                   onClick={handlePrev}
                   disabled={onboardingStep === 0}
                 >

@@ -49,7 +49,10 @@ The Settings application has been **successfully implemented** with all requeste
 - [x] Files created:
   - `SettingsApp.jsx` - Main settings window with sidebar
   - `WallpaperPicker.jsx` - Wallpaper selection component
-  - `settingsData.js` - Wallpaper configurations array
+- [x] Centralized data in `src/data/apps/`
+  - `settings/settingsData.js` - Wallpaper configurations array
+  - `fileManager/folderData.js` - Folder tree + helpers
+  - `fileManager/onboarding.js` - Tutorial content
 
 ### 5. Desktop Integration ✅
 
@@ -73,7 +76,7 @@ The Settings application has been **successfully implemented** with all requeste
 
 1. `/src/components/Apps/Settings/SettingsApp.jsx` - Main settings interface
 2. `/src/components/Apps/Settings/WallpaperPicker.jsx` - Wallpaper selection UI
-3. `/src/components/Apps/Settings/settingsData.js` - Configuration data
+3. `/src/data/apps/settings/settingsData.js` - Configuration data
 4. `/SETTINGS_APP.md` - Technical documentation
 5. `/SETTINGS_GUIDE.md` - User guide
 
@@ -267,7 +270,7 @@ Desktop background updates instantly
 ### Code Extensibility
 
 - Modular component structure
-- Centralized data in `settingsData.js`
+- Centralized data in `src/data/apps/`
 - Easy to add new sections
 - Clean separation of concerns
 

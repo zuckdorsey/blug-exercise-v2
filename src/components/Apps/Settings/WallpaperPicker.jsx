@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Check, Upload, X } from "lucide-react";
 import useStore from "../../../store/windowStore";
-import { wallpapers } from "./settingsData";
+import { wallpapers } from "../../../data/apps/settings/settingsData";
 
 const WallpaperPicker = () => {
   const currentWallpaper = useStore((state) => state.wallpaper);

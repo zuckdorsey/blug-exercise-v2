@@ -248,7 +248,7 @@ console.log(currentWallpaper); // e.g., "default"
 **Add New Wallpaper:**
 
 1. Add to `Desktop.jsx` wallpapers object
-2. Add to `settingsData.js` wallpapers array
+2. Add to `src/data/apps/settings/settingsData.js` wallpapers array
 3. Restart dev server
 
 ---

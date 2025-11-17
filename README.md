@@ -132,8 +132,14 @@ src/
 │       │   └── Tentang.jsx        # About Linux
 │       └── Settings/              # ⭐ NEW
 │           ├── SettingsApp.jsx    # Main settings window
-│           ├── WallpaperPicker.jsx # Wallpaper selection
-│           └── settingsData.js    # Wallpaper configs
+│           └── WallpaperPicker.jsx # Wallpaper selection
+├── data/
+│   └── apps/
+│       ├── fileManager/
+│       │   ├── folderData.js      # Folder structure + helpers
+│       │   └── onboarding.js      # Guided tour content
+│       └── settings/
+│           └── settingsData.js    # Wallpaper & section configs
 ├── store/
 │   └── windowStore.js             # Zustand state management
 ├── App.jsx                        # Main app component
@@ -170,7 +176,7 @@ const wallpapers = {
 
 // Tambah wallpaper baru:
 // 1. Tambah entry di object wallpapers di atas
-// 2. Tambah entry di src/components/Apps/Settings/settingsData.js
+// 2. Tambah entry di src/data/apps/settings/settingsData.js
 ```
 
 ### Menambah Aplikasi Baru

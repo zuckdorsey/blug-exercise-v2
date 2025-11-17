@@ -1,4 +1,4 @@
-import { folderInfo } from "../../FileManager/folderData";
+import { folderInfo } from "../../../data/apps/fileManager/folderData";
 
 const STORAGE_KEY = "LinuxOnWeb-terminal-vfs";
 const DEFAULT_USER = "bill";

@@ -55,8 +55,10 @@ The Settings application is a macOS-styled system preferences window that allows
 ```
 src/components/Apps/Settings/
 ├── SettingsApp.jsx         # Main settings window with sidebar
-├── WallpaperPicker.jsx     # Wallpaper selection component
-└── settingsData.js         # Wallpaper configurations
+└── WallpaperPicker.jsx     # Wallpaper selection component
+
+src/data/apps/settings/
+└── settingsData.js         # Wallpaper configurations & sections
 ```
 
 ### ✅ 6. Desktop Integration
@@ -115,7 +117,7 @@ const wallpapers = {
 - Hover effects (scale + ring)
 - Info tip at bottom
 
-**settingsData.js**:
+**settingsData.js** (now located at `src/data/apps/settings/`):
 
 - Wallpaper array with id, name, preview, description
 - Settings sections configuration
